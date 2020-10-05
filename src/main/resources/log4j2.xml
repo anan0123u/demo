@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Configuration status="debug">
+
+    <Appenders>
+
+        <Console name="ConsoleAppender">
+
+        </Console>
+
+        <RollingFile name="RollingFileAppender" fileName="./info.log" filePattern="./info_%d{yyyy-MM-dd}_%i.log">
+            <PatternLayout charset="UTF-8" pattern="%m%n"/>
+            <Policies>
+                <!--<TimeBasedTriggeringPolicy interval="1"/>-->
+                <CronTriggeringPolicy schedule="0 30 0 * * ?"/>
+                <!--<SizeBasedTriggeringPolicy size="1MB"/>-->
+            </Policies>
+        </RollingFile>
+<!--        <Console name="ConsoleAppender" target="SYSTEM_OUT">-->
+<!--            <PatternLayout pattern="%m%n"></PatternLayout>-->
+<!--        </Console>-->
+
+<!--        <File name="" target="">-->
+<!--            <PatternLayout pattern=""></PatternLayout>-->
+<!--        </File>-->
+
+    </Appenders>
+
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="RollingFileAppender"></AppenderRef>
+            <AppenderRef ref="ConsoleAppender"></AppenderRef>
+        </Root>
+    </Loggers>
+
+</Configuration>
