@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.one.mapper.AuthMapper">
+
+    <select id="getAuthCount" resultType="java.lang.Integer">
+        select count(0) from ti_auth
+    </select>
+
+    <select id="getAuthList" resultType="java.util.Map">
+        select * from ti_auth
+    </select>
+
+    <insert id="addAuth" parameterType="java.util.Map">
+        insert into ti_auth (auth_id, auth_name, auth_type, p_id, stop_flag, auth_value, create_time) values
+        (null, #{authName}, #{authType}, #{pId}, 0, #{authValue}, now())
+    </insert>
+
+    <update id="editAuth" parameterType="java.util.Map">
+        update ti_auth set auth_name=#{authName}, auth_type=#{authType}, auth_value=#{authValue}, update_time=now() where auth_id=#{authId}
+    </update>
+
+    <update id="stopAuth" parameterType="java.lang.Integer">
+        update ti_auth set stop_flag = case when stop_flag=0 then 1 else 0 end where auth_id=#{authId}
+    </update>
+</mapper>
