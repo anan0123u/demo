@@ -775,7 +775,7 @@
         <!-- Main content -->
         <div class="content">
 
-            <button type="button" class="btn btn-block btn-primary" style="width: 120px" onclick="addAuth()">
+            <button type="button" class="btn btn-block btn-primary" style="width: 120px" onclick="add0Auth()">
                 <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;新增</button>
 
             <table id="table_auth" class="table"></table>
@@ -791,12 +791,20 @@
                             </button>
                         </div>
 
+                        <input id="p_id" hidden/>
                         <form class="form-horizontal">
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="auth_id" class="col-sm-2 col-form-label">id</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="auth_id" placeholder="id">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="p_name" class="col-sm-2 col-form-label">p name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="p_name"
+                                               placeholder="parent auth ">
                                     </div>
                                 </div>
                                 <div class="form-group row">

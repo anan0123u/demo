@@ -15,7 +15,7 @@
     </delete>
 
     <insert id="addRole" parameterType="java.util.Map">
-        insert into ti_role (role_id, role_name, stop_flag, create_time) values (#{roleId}, #{roleName}, #{stopFlag}, now())
+        insert into ti_role (role_id, role_name, stop_flag, create_time) values (null, #{roleName}, #{stopFlag}, now())
     </insert>
 
     <update id="editRole" parameterType="java.util.Map">

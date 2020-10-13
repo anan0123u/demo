@@ -25,6 +25,11 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public RetData addAuth(Map map) {
+        String pId = map.get("pId").toString().trim();
+        if ("".equals(pId)) {
+            map.remove("pId");
+        }
+
         int result = authMapper.addAuth(map);
         return new RetData(0, "", null);
     }

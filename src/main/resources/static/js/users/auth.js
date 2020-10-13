@@ -3,7 +3,7 @@ var $table = $("#table_auth");
 $(function () {
 
     var events = {};
-    events['click #ck1'] = addAuth;
+    events['click #xz1'] = addAuth;
     events['click #ty1'] = stopAuth;
     events['click #sc1'] = delAuth;
 
@@ -41,7 +41,7 @@ $(function () {
 
 function operateFormatter(value, row, index) {
     var result = "";
-    result += "<a id='ck1' class='btn btn-xs btn-info' title='新增'><i class='fa fa-search'></i></a>";
+    result += "<a id='xz1' class='btn btn-xs btn-info' title='新增'><i class='fa fa-plus'></i></a>";
     result += "<a id='ty1' class='btn btn-xs btn-danger' title='停用'><i class='fa fa-ban'></i></a>";
     result += "<a id='sc1' class='btn btn-xs btn-danger' title='删除'><i class='fa fa-trash'></i></a>";
 
@@ -49,7 +49,15 @@ function operateFormatter(value, row, index) {
 
 }
 
-function addAuth() {
+function add0Auth() {
+    $("#p_id").val("");
+    $("#p_name").val("");
+    $('#authModal').modal('show');
+}
+
+function addAuth(e, value, row, index) {
+    $("#p_id").val(row.auth_id);
+    $("#p_name").val(row.auth_name);
     $('#authModal').modal('show');
 }
 
@@ -60,9 +68,14 @@ function saveAuth() {
     var authName = $("#auth_name").val();
     var authValue = $("#auth_value").val();
 
+    var pId = $("#p_id").val();
+    var pName = $("#p_name").val();
+
     var pData = {
         authName: authName,
-        authValue: authValue
+        authValue: authValue,
+        pId: pId,
+        pName: pName
     }
 
     $.ajax({
